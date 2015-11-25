@@ -749,9 +749,40 @@ code {
   </section>
   <section>
     <h3 id="what-is-the-polymer-way-">What is the Polymer way?</h3>
-<ul>
-<li>Today&#39;s example: converting kilometers to miles</li>
-</ul>
+<p>Today&#39;s example: converting kilometers to miles</p>
+<pre><code>Miles: &lt;display-miles km=&quot;42.195&quot;&gt;&lt;/display-miles&gt;</code></pre>
+
+  </section>
+  <section>
+    <pre><code>&lt;dom-module id=&quot;display-miles&quot;&gt;
+  &lt;template&gt;
+    &lt;span&gt;{{ miles }}&lt;/span&gt;
+  &lt;/template&gt;
+  &lt;script&gt;
+    ///
+  &lt;/script&gt;
+&lt;/dom-module&gt;</code></pre>
+<p>Alternative:</p>
+<pre><code>&lt;span&gt;{{ kilometersToMiles(km) }}&lt;/span&gt;</code></pre>
+
+  </section>
+  <section>
+    <pre><code>  &lt;script&gt;
+      Polymer({ is: &#39;display-miles&#39;,
+                properties: {
+                  km: {
+                    type: Number
+                  },
+                  miles: {
+                    type: Number,
+                    computed: &#39;kilometersToMiles(km)&#39;
+                  }
+                },
+                kilometersToMiles: function(km) {
+                  return Math.round(0.621371192 * km * 10) / 10.0;
+                }
+             });
+  &lt;/script&gt;</code></pre>
 
   </section>
   <section>
@@ -774,7 +805,49 @@ code {
 
   </section>
   <section>
-    
+    <pre><code>Mpg: &lt;display-mpg miles=&quot; ??? &quot; gallons=&quot;1&quot;&gt;&lt;/display-mpg&gt;</code></pre>
+
+  </section>
+  <section>
+    <pre><code>&lt;kilometers-to-miles km=&quot;42.195&quot; miles=&quot;{{ miles }}&quot;&gt;&lt;/kilometers-to-miles&gt;
+Mpg: &lt;display-mpg miles=&quot;{{ miles }}&quot; gallons=&quot;1&quot;&gt;&lt;/display-mpg&gt;</code></pre>
+
+  </section>
+  <section>
+    <pre><code>&lt;dom-module id=&quot;kilometers-to-miles&quot;&gt;&lt;script&gt;
+  Polymer({
+    is: &#39;kilometers-to-miles&#39;,
+    properties: {
+      km: { type: Number },
+      miles: {
+        type: Number,
+        computed: &#39;kilometersToMiles(km)&#39;,
+        notify: true
+      }
+    },
+    kilometersToMiles: function(km) {
+      return Math.round(0.621371192 * km * 10) / 10.0;
+    }
+  });
+&lt;/script&gt;&lt;/dom-module&gt;</code></pre>
+
+  </section>
+  <section>
+    <p>Refactoring:</p>
+<pre><code>&lt;link rel=&quot;import&quot; href=&quot;../../components/kilometers-to-miles/kilometers-to-miles.html&quot;&gt;
+&lt;dom-module id=&quot;display-miles&quot;&gt;
+  &lt;template&gt;
+  &lt;kilometers-to-miles km=&quot;{{ km }}&quot; miles=&quot;{{ miles }}&quot;&gt;&lt;/kilometers-to-miles&gt;
+  &lt;span&gt;{{ miles }}&lt;/span&gt;
+  &lt;/template&gt;
+  &lt;script&gt;
+      Polymer({ is: &#39;display-miles&#39;, properties: {
+              km: { type: Number },
+              miles: { type: Number } },
+            });
+  &lt;/script&gt;
+&lt;/dom-module&gt;</code></pre>
+
   </section>
   <section>
     <div class="author">

@@ -24,7 +24,50 @@ theme: sudodoki/reveal-cleaver-theme
 
 ### What is the Polymer way?
 
-* Today's example: converting kilometers to miles
+Today's example: converting kilometers to miles
+
+```
+Miles: <display-miles km="42.195"></display-miles>
+```
+
+------------------------------------------------------------------------
+
+```
+<dom-module id="display-miles">
+  <template>
+    <span>{{ miles }}</span>
+  </template>
+  <script>
+    ///
+  </script>
+</dom-module>
+```
+
+Alternative:
+```
+<span>{{ kilometersToMiles(km) }}</span>
+```
+
+------------------------------------------------------------------------
+
+```
+  <script>
+      Polymer({ is: 'display-miles',
+                properties: {
+                  km: {
+                    type: Number
+                  },
+                  miles: {
+                    type: Number,
+                    computed: 'kilometersToMiles(km)'
+                  }
+                },
+                kilometersToMiles: function(km) {
+                  return Math.round(0.621371192 * km * 10) / 10.0;
+                }
+             });
+  </script>
+```
 
 ------------------------------------------------------------------------
 
@@ -48,3 +91,53 @@ theme: sudodoki/reveal-cleaver-theme
 ```
 
 ------------------------------------------------------------------------
+
+```
+Mpg: <display-mpg miles=" ??? " gallons="1"></display-mpg>
+```
+
+------------------------------------------------------------------------
+
+```
+<kilometers-to-miles km="42.195" miles="{{ miles }}"></kilometers-to-miles>
+Mpg: <display-mpg miles="{{ miles }}" gallons="1"></display-mpg>
+```
+------------------------------------------------------------------------
+
+```
+<dom-module id="kilometers-to-miles"><script>
+  Polymer({
+    is: 'kilometers-to-miles',
+    properties: {
+      km: { type: Number },
+      miles: {
+        type: Number,
+        computed: 'kilometersToMiles(km)',
+        notify: true
+      }
+    },
+    kilometersToMiles: function(km) {
+      return Math.round(0.621371192 * km * 10) / 10.0;
+    }
+  });
+</script></dom-module>
+```
+
+------------------------------------------------------------------------
+
+Refactoring:
+```
+<link rel="import" href="../../components/kilometers-to-miles/kilometers-to-miles.html">
+<dom-module id="display-miles">
+  <template>
+  <kilometers-to-miles km="{{ km }}" miles="{{ miles }}"></kilometers-to-miles>
+  <span>{{ miles }}</span>
+  </template>
+  <script>
+      Polymer({ is: 'display-miles', properties: {
+              km: { type: Number },
+              miles: { type: Number } },
+            });
+  </script>
+</dom-module>
+```

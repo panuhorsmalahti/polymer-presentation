@@ -773,6 +773,82 @@ code {
 
   </section>
   <section>
+    <h3 id="so-it-s-a-framework-right-">So it&#39;s a framework, right?</h3>
+<ul>
+<li>With Polymer the framework is DOM.<ul>
+<li>The component model is Custom Elements.</li>
+<li>Scoping provided by Shadow DOM.</li>
+</ul>
+</li>
+<li>Web components are really low-level by design.</li>
+<li>Polymer is a sugaring layer to build your own element sets and applications with.</li>
+</ul>
+
+  </section>
+  <section>
+    <h3 id="philosophy">Philosophy</h3>
+<ul>
+<li><p>Everything is a component.</p>
+<ul>
+<li>Build big things from small things, compose.</li>
+<li>Separation of concerns is the key to scalable applications.</li>
+</ul>
+</li>
+<li><p>Everything is an element.</p>
+<ul>
+<li>Custom elements are the components of Polymer.</li>
+<li>Elements are used everywhere.</li>
+<li>UI Elements, APIs (example: <a href="https://elements.polymer-project.org/elements/iron-localstorage">iron-localstorage</a>)</li>
+</ul>
+</li>
+<li><p>Less code.</p>
+<ul>
+<li>Dont&#39; repeat.</li>
+<li>Only write code that&#39;s unique to your app and / or element.</li>
+<li>Data-binding (reduces code).</li>
+</ul>
+</li>
+</ul>
+
+  </section>
+  <section>
+    <p>What ever, dude.. Show me some code!</p>
+
+  </section>
+  <section>
+    <p>Declaring your custom element:</p>
+<pre><code>&lt;link rel=&quot;import&quot; href=&quot;lib/polymer/polymer.html&quot;&gt;
+
+&lt;script&gt;
+      // register a new element called foo-bar
+      Polymer({
+        is: &quot;foo-bar&quot;,
+        // add a callback to the element&#39;s prototype
+        ready: function() {
+            this.textContent = &quot;What ever, dude.. Show me some code!&quot;
+        }
+      });
+&lt;/script&gt;</code></pre>
+
+  </section>
+  <section>
+    <p>Using your custom element:</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;script src=&quot;lib/webcomp/webcomponents-lite.min.js&quot;&gt;&lt;/script&gt;
+        &lt;link rel=&quot;import&quot; href=&quot;foo-bar.html&quot;&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;foo-bar&gt;&lt;/foo-bar&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+  </section>
+  <section>
+    
+  </section>
+  <section>
     <div class="author">
   <h1 class="name">Mika Turunen</h1>
     <h3 class="twitter">

@@ -754,7 +754,8 @@ code {
 
   </section>
   <section>
-    <pre><code>&lt;dom-module id=&quot;display-miles&quot;&gt;
+    <p>display-miles.html:</p>
+<pre><code>&lt;dom-module id=&quot;display-miles&quot;&gt;
   &lt;template&gt;
     &lt;span&gt;{{ miles }}&lt;/span&gt;
   &lt;/template&gt;
@@ -767,7 +768,8 @@ code {
 
   </section>
   <section>
-    <pre><code>  &lt;script&gt;
+    <p>display-miles.html:</p>
+<pre><code>  &lt;script&gt;
       Polymer({ is: &#39;display-miles&#39;,
                 properties: {
                   km: {
@@ -786,7 +788,8 @@ code {
 
   </section>
   <section>
-    <pre><code>&lt;dom-module id=&quot;display-miles&quot;&gt;
+    <p>display-miles.html:</p>
+<pre><code>&lt;dom-module id=&quot;display-miles&quot;&gt;
   &lt;template&gt; &lt;span&gt; {{ miles }} &lt;/span&gt; &lt;/template&gt;
   &lt;script&gt;
       Polymer({ is: &#39;display-miles&#39;,
@@ -814,7 +817,8 @@ Mpg: &lt;display-mpg miles=&quot;{{ miles }}&quot; gallons=&quot;1&quot;&gt;&lt;
 
   </section>
   <section>
-    <pre><code>&lt;dom-module id=&quot;kilometers-to-miles&quot;&gt;&lt;script&gt;
+    <p>kilometers-to-miles.html:</p>
+<pre><code>&lt;dom-module id=&quot;kilometers-to-miles&quot;&gt;&lt;script&gt;
   Polymer({
     is: &#39;kilometers-to-miles&#39;,
     properties: {
@@ -834,10 +838,13 @@ Mpg: &lt;display-mpg miles=&quot;{{ miles }}&quot; gallons=&quot;1&quot;&gt;&lt;
   </section>
   <section>
     <p>Refactoring:</p>
-<pre><code>&lt;link rel=&quot;import&quot; href=&quot;../../components/kilometers-to-miles/kilometers-to-miles.html&quot;&gt;
+<p>display-miles.html:</p>
+<pre><code>&lt;link rel=&quot;import&quot;
+  href=&quot;../../components/kilometers-to-miles/kilometers-to-miles.html&quot;&gt;
 &lt;dom-module id=&quot;display-miles&quot;&gt;
   &lt;template&gt;
-  &lt;kilometers-to-miles km=&quot;{{ km }}&quot; miles=&quot;{{ miles }}&quot;&gt;&lt;/kilometers-to-miles&gt;
+  &lt;kilometers-to-miles km=&quot;{{ km }}&quot; miles=&quot;{{ miles }}&quot;&gt;
+  &lt;/kilometers-to-miles&gt;
   &lt;span&gt;{{ miles }}&lt;/span&gt;
   &lt;/template&gt;
   &lt;script&gt;
@@ -845,8 +852,44 @@ Mpg: &lt;display-mpg miles=&quot;{{ miles }}&quot; gallons=&quot;1&quot;&gt;&lt;
               km: { type: Number },
               miles: { type: Number } },
             });
-  &lt;/script&gt;
+&lt;/script&gt;
 &lt;/dom-module&gt;</code></pre>
+
+  </section>
+  <section>
+    <h2 id="polymer-module-loader">Polymer Module Loader</h2>
+<p>based on IMD</p>
+<pre><code>bower install panuhorsmalahti/PML --save</code></pre>
+<pre><code>&lt;link rel=&quot;import&quot; href=&quot;bower_components/pml/pml.html&quot;&gt;</code></pre>
+
+  </section>
+  <section>
+    <p>mile-service.js:</p>
+<pre><code>define(&#39;mile-service&#39;, {
+    kilometersToMiles: function(km) {
+        return Math.round(0.621371192 * km * 10) / 10.0;
+    }
+});</code></pre>
+
+  </section>
+  <section>
+    <p>display-miles.html:</p>
+<pre><code>&lt;span&gt;{{ kilometersToMiles(km) }}&lt;/span&gt;
+
+define([&#39;mile-service&#39;], function(mileService) {
+  Polymer({
+    is: &#39;display-miles&#39;,
+    properties: {
+      km: {
+        type: Number
+      },
+      miles: {
+        type: Number
+      }
+    },
+    kilometersToMiles: mileService.kilometersToMiles
+  });
+});</code></pre>
 
   </section>
   <section>

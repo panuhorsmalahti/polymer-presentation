@@ -32,6 +32,7 @@ Miles: <display-miles km="42.195"></display-miles>
 
 ------------------------------------------------------------------------
 
+display-miles.html:
 ```
 <dom-module id="display-miles">
   <template>
@@ -50,6 +51,7 @@ Alternative:
 
 ------------------------------------------------------------------------
 
+display-miles.html:
 ```
   <script>
       Polymer({ is: 'display-miles',
@@ -71,6 +73,7 @@ Alternative:
 
 ------------------------------------------------------------------------
 
+display-miles.html:
 ```
 <dom-module id="display-miles">
   <template> <span> {{ miles }} </span> </template>
@@ -104,6 +107,7 @@ Mpg: <display-mpg miles="{{ miles }}" gallons="1"></display-mpg>
 ```
 ------------------------------------------------------------------------
 
+kilometers-to-miles.html:
 ```
 <dom-module id="kilometers-to-miles"><script>
   Polymer({
@@ -126,11 +130,15 @@ Mpg: <display-mpg miles="{{ miles }}" gallons="1"></display-mpg>
 ------------------------------------------------------------------------
 
 Refactoring:
+
+display-miles.html:
 ```
-<link rel="import" href="../../components/kilometers-to-miles/kilometers-to-miles.html">
+<link rel="import"
+  href="../../components/kilometers-to-miles/kilometers-to-miles.html">
 <dom-module id="display-miles">
   <template>
-  <kilometers-to-miles km="{{ km }}" miles="{{ miles }}"></kilometers-to-miles>
+  <kilometers-to-miles km="{{ km }}" miles="{{ miles }}">
+  </kilometers-to-miles>
   <span>{{ miles }}</span>
   </template>
   <script>
@@ -138,6 +146,52 @@ Refactoring:
               km: { type: Number },
               miles: { type: Number } },
             });
-  </script>
+</script>
 </dom-module>
+```
+
+------------------------------------------------------------------------
+
+## Polymer Module Loader
+based on IMD
+
+```
+bower install panuhorsmalahti/PML --save
+```
+
+```
+<link rel="import" href="bower_components/pml/pml.html">
+```
+
+------------------------------------------------------------------------
+
+mile-service.js:
+```
+define('mile-service', {
+    kilometersToMiles: function(km) {
+        return Math.round(0.621371192 * km * 10) / 10.0;
+    }
+});
+```
+
+------------------------------------------------------------------------
+
+display-miles.html:
+```
+<span>{{ kilometersToMiles(km) }}</span>
+
+define(['mile-service'], function(mileService) {
+  Polymer({
+    is: 'display-miles',
+    properties: {
+      km: {
+        type: Number
+      },
+      miles: {
+        type: Number
+      }
+    },
+    kilometersToMiles: mileService.kilometersToMiles
+  });
+});
 ```

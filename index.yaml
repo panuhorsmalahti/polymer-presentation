@@ -195,3 +195,8 @@ define(['mile-service'], function(mileService) {
   });
 });
 ```
+
+------------------------------------------------------------------------
+
+http://panuhorsmalahti.github.io/polymer-examples/
+http://panuhorsmalahti.github.io/polymer-presentation

@@ -9,110 +9,44 @@ theme: sudodoki/reveal-cleaver-theme
 
 ------------------------------------------------------------------------
 
-![logo][logo]
+# Mika Turunen
 
-[logo]: logo.png
+&nbsp;
 
-------------------------------------------------------------------------
+#### @mikaturunen
+#### mika.turunen@ymail.com
 
-### Installation
+&nbsp;
 
-Docker Engine is supported on Linux, Cloud, Windows, and OS X.
-
-* [Install Docker Engine](https://docs.docker.com/engine/installation/#installation)
-
-
+> "Full stack specialist, technologist, all around geek.. you name it, I have it."
 
 ------------------------------------------------------------------------
 
-### Docker 101
+# Polymer
 
-Docker containers wrap up a piece of software in a complete filesystem that contains everything it needs to run: code, runtime, system tools, system libraries – anything you can install on a server. This guarantees that it will always run the same, regardless of the environment it is running in.
-
-------------------------------------------------------------------------
-
-### Docker terminology
-
-* Image
-* Container
-* Docker Hub / Registry
+<img src="logo.png" style="width: 400px"></img>
 
 ------------------------------------------------------------------------
 
-### How does it work
+### What is Polymer?
 
-* Images are read-only templates
-* Docker uses union file system (UnionFS, other alternatives possible)
-* Union file systems allow files and directories of separate file systems, known as branches, to be transparently overlaid, forming a single coherent file system.
+* The Polymer library is designed to make it easier and faster for developers to create great, reusable components for the modern web.
 
+* Utilizes web compoents for building elements and eventually applications.
 
-------------------------------------------------------------------------
-
-### What is a typical VM
-
-<center>
-<img style="width: 500px; padding-top: 10px;" src="what-is-docker-diagram.png"></img>
-</center>
-
-------------------------------------------------------------------------
-
-### What is Docker
-
-<center>
-<img style="width: 500px; padding-top: 10px;" src="what-is-vm-diagram.png"></img>
-</center>
-
-------------------------------------------------------------------------
-
-### What else?
-
-* Scalability
-* Reusability
-* Dev, QA, Production = same
-
-------------------------------------------------------------------------
-
-### Examples, MariaDb
-
-* https://hub.docker.com/_/mariadb/
-
-```bash
-$ docker run --name some-mariadb -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mariadb:tag
 ```
-
-Connect to MySQL from an application in another Docker container
-
-```bash
-$ docker run --name some-app --link some-mariadb:mysql -d application-that-uses-mysql
+<my-tabstrip>
+	<my-tab> Home 		</my-tab>
+	<my-tab> Services 	</my-tab>
+	<my-tab> Contact Us   </my-tab>
+<my-tabstrip>
 ```
 
 ------------------------------------------------------------------------
 
-### Examples, WordPress
+### Web components, polymer.. huh?
 
-* https://hub.docker.com/_/wordpress/
-
-```bash
-$ docker run --name some-wordpress --link some-mysql:mysql -p 8080:80 -d wordpress
-
-```
-
-Or if you'd like to use an external database instead of a linked mysql container, specify the hostname and port with WORDPRESS_DB_HOST along with the password in WORDPRESS_DB_PASSWORD and the username in WORDPRESS_DB_USER (if it is something other than root):
+<img src="web-poly-stack.svg" style="width: 500px"></img>
 
 
-```bash
-$ docker run --name some-wordpress -e WORDPRESS_DB_HOST=10.1.2.3:3306 \
-    -e WORDPRESS_DB_USER=... -e WORDPRESS_DB_PASSWORD=... -d wordpress
-```
 
-------------------------------------------------------------------------
-
-### Examples, Couchdb
-
-* https://hub.docker.com/r/klaemo/couchdb/
-
-```bash
-sudo docker pull klaemo/couchdb:latest
-sudo docker run -d -p 5984:5984 --name couchdb klaemo/couchdb
-curl http://localhost:5984
-```

@@ -737,90 +737,39 @@ code {
 <div class="reveal">
     <div class="slides">
         <section>
-    <p><img src="logo.png" alt="logo"></p>
+    <h1 id="mika-turunen">Mika Turunen</h1>
+<p>&nbsp;</p>
+<h4 id="-mikaturunen">@mikaturunen</h4>
+<h4 id="mika-turunen-ymail-com">mika.turunen@ymail.com</h4>
+<p>&nbsp;</p>
+<blockquote>
+<p>&quot;Full stack specialist, technologist, all around geek.. you name it, I have it.&quot;</p>
+</blockquote>
 
   </section>
   <section>
-    <h3 id="installation">Installation</h3>
-<p>Docker Engine is supported on Linux, Cloud, Windows, and OS X.</p>
+    <h1 id="polymer">Polymer</h1>
+<p><img src="logo.png" style="width: 400px"></img></p>
+
+  </section>
+  <section>
+    <h3 id="what-is-polymer-">What is Polymer?</h3>
 <ul>
-<li><a href="https://docs.docker.com/engine/installation/#installation">Install Docker Engine</a></li>
+<li><p>The Polymer library is designed to make it easier and faster for developers to create great, reusable components for the modern web.</p>
+</li>
+<li><p>Utilizes web compoents for building elements and eventually applications.</p>
+</li>
 </ul>
+<pre><code>&lt;my-tabstrip&gt;
+    &lt;my-tab&gt; Home         &lt;/my-tab&gt;
+    &lt;my-tab&gt; Services     &lt;/my-tab&gt;
+    &lt;my-tab&gt; Contact Us   &lt;/my-tab&gt;
+&lt;my-tabstrip&gt;</code></pre>
 
   </section>
   <section>
-    <h3 id="docker-101">Docker 101</h3>
-<p>Docker containers wrap up a piece of software in a complete filesystem that contains everything it needs to run: code, runtime, system tools, system libraries – anything you can install on a server. This guarantees that it will always run the same, regardless of the environment it is running in.</p>
-
-  </section>
-  <section>
-    <h3 id="docker-terminology">Docker terminology</h3>
-<ul>
-<li>Image</li>
-<li>Container</li>
-<li>Docker Hub / Registry</li>
-</ul>
-
-  </section>
-  <section>
-    <h3 id="how-does-it-work">How does it work</h3>
-<ul>
-<li>Images are read-only templates</li>
-<li>Docker uses union file system (UnionFS, other alternatives possible)</li>
-<li>Union file systems allow files and directories of separate file systems, known as branches, to be transparently overlaid, forming a single coherent file system.</li>
-</ul>
-
-  </section>
-  <section>
-    <h3 id="what-is-a-typical-vm">What is a typical VM</h3>
-<center>
-<img style="width: 500px; padding-top: 10px;" src="what-is-docker-diagram.png"></img>
-</center>
-  </section>
-  <section>
-    <h3 id="what-is-docker">What is Docker</h3>
-<center>
-<img style="width: 500px; padding-top: 10px;" src="what-is-vm-diagram.png"></img>
-</center>
-  </section>
-  <section>
-    <h3 id="what-else-">What else?</h3>
-<ul>
-<li>Scalability</li>
-<li>Reusability</li>
-<li>Dev, QA, Production = same</li>
-</ul>
-
-  </section>
-  <section>
-    <h3 id="examples-mariadb">Examples, MariaDb</h3>
-<ul>
-<li><a href="https://hub.docker.com/_/mariadb/">https://hub.docker.com/_/mariadb/</a></li>
-</ul>
-<pre><code class="lang-bash">$ docker run --name some-mariadb -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mariadb:tag</code></pre>
-<p>Connect to MySQL from an application in another Docker container</p>
-<pre><code class="lang-bash">$ docker run --name some-app --link some-mariadb:mysql -d application-that-uses-mysql</code></pre>
-
-  </section>
-  <section>
-    <h3 id="examples-wordpress">Examples, WordPress</h3>
-<ul>
-<li><a href="https://hub.docker.com/_/wordpress/">https://hub.docker.com/_/wordpress/</a></li>
-</ul>
-<pre><code class="lang-bash">$ docker run --name some-wordpress --link some-mysql:mysql -p 8080:80 -d wordpress</code></pre>
-<p>Or if you&#39;d like to use an external database instead of a linked mysql container, specify the hostname and port with WORDPRESS_DB_HOST along with the password in WORDPRESS_DB_PASSWORD and the username in WORDPRESS_DB_USER (if it is something other than root):</p>
-<pre><code class="lang-bash">$ docker run --name some-wordpress -e WORDPRESS_DB_HOST=10.1.2.3:3306 \
-    -e WORDPRESS_DB_USER=... -e WORDPRESS_DB_PASSWORD=... -d wordpress</code></pre>
-
-  </section>
-  <section>
-    <h3 id="examples-couchdb">Examples, Couchdb</h3>
-<ul>
-<li><a href="https://hub.docker.com/r/klaemo/couchdb/">https://hub.docker.com/r/klaemo/couchdb/</a></li>
-</ul>
-<pre><code class="lang-bash">sudo docker pull klaemo/couchdb:latest
-sudo docker run -d -p 5984:5984 --name couchdb klaemo/couchdb
-curl http://localhost:5984</code></pre>
+    <h3 id="web-components-polymer-huh-">Web components, polymer.. huh?</h3>
+<p><img src="web-poly-stack.svg" style="width: 500px"></img></p>
 
   </section>
   <section>

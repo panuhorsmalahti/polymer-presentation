@@ -1,15 +1,7 @@
-# Hands on intro to Docker in under five minutes
+# Polymer introduction for Tampere Polymer Meetup
+Link to the presentation: [Polymer intro][1].
 
-Link to the presentation: [Docker intro in < 5min][1].
-
-This is my five minute intro into Docker that I presented internally as a really super-fast ramp up on what Docker is compared to more standard VM environment and how Docker can be leveraged. Heavily depends on discussion with the team and hands-on examples in the slides.
-
-By no means is this a complete "learn how to Docker" type of presentation but a quick dive into the deep end, start doing before even understanding what you're doing. Learn by doing and learn by example are the keywords here.
-
-It quickly mixes the bag up and makes you start using Docker asap, have fun guys :smile:
+This is my small presentation for introduction into Polymer and what it actually is. I presented it at Tampere Polymer Meetup.
 
 
-
-
-
-[1]: http://mikaturunen.github.io/5minuteintrotodocker/
+[1]: http://mikaturunen.github.io/polymer-intro-presentation/
